@@ -26,4 +26,3 @@ admin.site.register(SaleCheck)
 admin.site.register(Visits, VisitsAdminSite)
 admin.site.register(Client)
 admin.site.register(Discount)
-

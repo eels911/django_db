@@ -12,14 +12,14 @@ class VisitsView(APIView):
     def get(self, request):
         visits = Visits.objects.all()
         serializer = VisitsSerializer(visits, many=True)
-        return Response({"products": serializer.data})
+        return Response({"visits": serializer.data})
 
-    def post(self, request):
-        visits = request.data.get('visits')
-        serializer = VisitsSerializer(data=visits)
-        if serializer.is_valid(raise_exception=True):
-            visit_saved = serializer.save()
-        return Response({"success": "Visit '{}' created successfully".format(visit_saved.title)})
+    # def post(self, request):
+    #     visits = request.data.get('visits')
+    #     serializer = VisitsSerializer(data=visits)
+    #     if serializer.is_valid(raise_exception=True):
+    #         visit_saved = serializer.save()
+    #     return Response({"success": "Visit '{}' created successfully".format(visit_saved.title)})
 
 
 
