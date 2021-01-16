@@ -6,7 +6,7 @@ from .models import Status, Services, Visits, Client, Products, Sale, Post, Sale
 class VisitsAdminSite(admin.ModelAdmin):
     actions = ['delete']
     model = Visits
-    list_display = ( 'visit_number', 'service_name', 'fio_client', 'fio_staff', 'price')
+    list_display = ('visit_number', 'service_name', 'fio_client', 'fio_staff', 'price')
     fields = ['visit_number', 'service_name', 'fio_client', 'fio_staff', 'price']
 
     def delete(self, request, queryset):

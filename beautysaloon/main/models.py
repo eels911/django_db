@@ -5,7 +5,6 @@ from django.contrib.postgres.validators import (MinValueValidator, MaxValueValid
 
 class Status(models.Model):
     status_name = models.CharField('Статус', max_length=80, unique=True)
-    visitnumber = models.IntegerField('Номер визита', validators=[MinValueValidator(1), MaxValueValidator(10)])
 
     class Meta:
         verbose_name = "Статус"

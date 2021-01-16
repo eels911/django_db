@@ -3,9 +3,9 @@ from django.forms import ModelForm, TextInput, NumberInput
 from django import forms
 
 
-# class PriceFilterForm(forms.Form):
-#     price_min = forms.IntegerField(label="От", required=False)
-#     price_max = forms.IntegerField(label="До", required=False)
+class PriceFilterForm(forms.Form):
+    price_min = forms.IntegerField(label="От", required=False)
+    price_max = forms.IntegerField(label="До", required=False)
 
 
 class VisitsForm(ModelForm):
