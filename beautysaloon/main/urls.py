@@ -8,5 +8,5 @@ app_name = "visits"
 
 urlpatterns = [
     path('', views.index),
-    # path('visits', views.VisitsView.as_view())
+    path('visits', views.VisitsView.as_view())
 ]
