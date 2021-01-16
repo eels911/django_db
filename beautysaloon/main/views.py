@@ -10,16 +10,16 @@ from .serializers import VisitsSerializer
 
 class VisitsView(APIView):
     def get(self, request):
-        products = Visits.objects.all()
-        serializer = VisitsSerializer(products, many=True)
+        visits = Visits.objects.all()
+        serializer = VisitsSerializer(visits, many=True)
         return Response({"products": serializer.data})
 
     def post(self, request):
-        products = request.data.get('product')
-        serializer = VisitsSerializer(data=products)
+        visits = request.data.get('visits')
+        serializer = VisitsSerializer(data=visits)
         if serializer.is_valid(raise_exception=True):
-            product_saved = serializer.save()
-        return Response({"success": "Product '{}' created successfully".format(product_saved.title)})
+            visit_saved = serializer.save()
+        return Response({"success": "Visit '{}' created successfully".format(visit_saved.title)})
 
 
 
