@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Cалон красоты</a>
+            <a class="btn btn-info" href="./admin">Войти</a>
+        </div>
+    </nav>
+
+    <div style="width: 85%; margin: auto">
+
+`       <div style="margin-top: 3vh;">
+            <h5>Логин: admin</h5>
+            <h5>Пароль: admin</h5>
+        </div>
+        `
+<!--        <div style="display: grid; margin-top: 3vh; grid-template-columns: repeat(4, 1fr); grid-gap: 2%">-->
+<!--            <a class="btn btn btn-dark" href="./api/products">api/products</a>-->
+
+<!--        </div>-->
+
+
+        <div style="margin-top: 5vh;">
+            <h1>Список посетителей</h1>
+
+<!--            <div>-->
+<!--                <form action="" method="get">-->
+<!--                    <div style="margin-top: 5vh; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 2%">-->
+<!--                        {{formsort.as_p}}-->
+<!--                    </div>-->
+<!--                    <input type="submit" value="Поиск" class="btn btn-success">-->
+<!--                </form>-->
+<!--            </div>-->
+
+
+            <div style="display: grid; margin-top: 5vh; grid-template-columns: repeat(4, 1fr); grid-gap: 2%">
+                {% for el in visits %}
+                    <div class="card text-white bg-success mb-3" style="max-width: 18rem">
+                        <div class="card-header"><h3>{{ el.visit_number }}</h3></div>
+                        <div class="card-body" style="display: grid; grid-template-rows: auto 2fr 1fr">
+                            <h6 class="card-title">{{ el.service_name }}</h6>
+                            <p class="card-text">{{ el.fio_client }}</p>
+                            <p class="card-text">{{ el.fio_staff }}</p>
+                            <h3 class="card-title" style="text-align: right; font-style: italic">{{ el.price }} руб.</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div style="margin: 5vh 0;">
+            <h1>Добавить визит</h1>
+            <form method="post" style="margin-top: 5vh;">
+                {% csrf_token %}
+                <label for="visit_number">Номер клиента:</label>
+                {{form.visit_number}}<br>
+                <label for="service_name">Услуга</label>
+                {{form.service_name}}<br>
+                <label for="fio_client">ФИО клиента:</label>
+                {{form.fio_client}}<br>
+                <label for="fio_staff">ФИО работника:</label>
+                {{form.fio_staff}}<br>
+                <label for="price">Цена:</label>
+                {{form.price}}<br>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+                <span>{{ error }}</span>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
